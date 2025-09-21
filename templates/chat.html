@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAATHI Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="SAATHI Logo">
+    <h1>SAATHI - Your AI Wellness Companion</h1>
+</header>
+
+<main>
+    <div id="chat-box"></div>
+
+    <!-- User input -->
+    <div class="chat-input">
+        <input type="text" id="user-input" placeholder="How are you feeling today?">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <!-- Optional Mood Buttons -->
+    <div class="mood-buttons">
+        <button onclick="sendMood('happy')">😊 Happy</button>
+        <button onclick="sendMood('sad')">😔 Sad</button>
+        <button onclick="sendMood('stressed')">😟 Stressed</button>
+    </div>
+</main>
+
+<script>
+    const chatBox = document.getElementById('chat-box');
+
+    // Function to append messages to chat box
+    function appendMessage(sender, message) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('message', sender);
+        msgDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+        chatBox.appendChild(msgDiv);
+        chatBox.scrollTop = chatBox.scrollHeight; // Auto scroll
+    }
+
+    // Send message typed by user
+    async function sendMessage() {
+        const userInput = document.getElementById('user-input').value.trim();
+        if (!userInput) return;
+        appendMessage('You', userInput);
+        document.getElementById('user-input').value = '';
+
+        const response = await fetch('/get_response', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userInput })
+        });
+        const data = await response.json();
+        appendMessage('SAATHI', data.reply);
+    }
+
+    // Send mood button click
+    async function sendMood(mood) {
+        appendMessage('You', `I feel ${mood}`);
+        const response = await fetch('/get_response', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: `I feel ${mood}` })
+        });
+        const data = await response.json();
+        appendMessage('SAATHI', data.reply);
+    }
+</script>
+
+</body>
+</html>

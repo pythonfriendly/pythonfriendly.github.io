@@ -1,0 +1,104 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background: #6c63ff;
+    color: white;
+    padding: 20px;
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: #6c63ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Chat box */
+#chat-box {
+    background: white;
+    border: 1px solid #ddd;
+    width: 80%;
+    height: 300px;
+    margin: 20px auto;
+    padding: 10px;
+    overflow-y: scroll;
+    text-align: left;
+    border-radius: 8px;
+}
+
+/* Chat input */
+.chat-input {
+    margin-top: 10px;
+}
+
+/* Messages styling */
+.message {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+.message.You {
+    background-color: #d1e7dd;
+    text-align: right;
+    margin-left: auto;
+}
+.message.SAATHI {
+    background-color: #f8d7da;
+    text-align: left;
+    margin-right: auto;
+}
+
+/* Mood buttons */
+.mood-buttons {
+    margin-top: 15px;
+}
+.mood-buttons button {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #6c63ff;
+    color: white;
+    cursor: pointer;
+}
+.mood-buttons button:hover {
+    background-color: #5a52d4;
+}
+
+/* Optional: responsive for mobile */
+@media screen and (max-width: 600px) {
+    #chat-box {
+        width: 95%;
+        height: 250px;
+    }
+    .mood-buttons button {
+        margin: 5px 2px;
+        padding: 6px 10px;
+    }
+}
