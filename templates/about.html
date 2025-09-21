@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAATHI - About</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
 
 <header>
-    <img src="{{ url_for('static', filename='logo.png') }}" alt="SAATHI Logo" width="120">
+    <img src="../static/logo.png" alt="SAATHI Logo" width="120">
     <h1>SAATHI - Your AI Wellness Companion</h1>
     <nav>
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('chat') }}">Chat</a>
-        <a href="{{ url_for('about') }}">About</a>
+        <a href="./index.html">Home</a>
+        <a href="./chat.html">Chat</a>
+        <a href="./about.html">About</a>
     </nav>
 </header>
 
@@ -32,7 +32,7 @@
 
     <p>Our goal is to make mental wellness accessible, friendly, and culturally relevant.</p>
 
-    <a class="btn" href="{{ url_for('chat') }}">Start Chatting with SAATHI</a>
+    <a class="btn" href="./chat.html">Start Chatting with SAATHI</a>
 </main>
 
 </body>
